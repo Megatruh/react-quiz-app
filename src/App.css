@@ -36,7 +36,7 @@ body{
   padding: 20px;
 }
 
-.startScreen{
+.start-screen{
   background-color: var(--bg-card);
   padding: 40px 30px;
   border-radius: 16px;
@@ -45,13 +45,13 @@ body{
   box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.2);
 }
 
-.startScreen h1{
+.start-screen h1{
   font-size: 32px;
   margin-bottom: 16px;
   color: var(--accent-primary);
 }
 
-.startScreen p{
+.start-screen p{
   color: var(--text-secondary);
   font-size: 16px;
   line-height: 1.6;
@@ -86,6 +86,7 @@ body{
   border: 1px solid var(--border-color);
   text-align: center;
   box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.2);
+  
 }
 
 .active-screen h2{
