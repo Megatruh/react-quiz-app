@@ -100,3 +100,86 @@ body{
   font-size: 16px;
   line-height: 1.6;
 }
+
+.header-active-screen{
+  margin-bottom:15px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.quiz-card{
+  background-color: var(--bg-card);
+  padding: 30px;
+  border-radius: 16px;
+  border:1px solid var(--border-color);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.question-text{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.question-container{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-option{
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-option:not(:disabled):hover{
+  border-color: var(--accent-primary);
+  background-color: rgba(99, 102, 241, 0.05);
+}
+
+/* Feedback state css */
+.btn-option.correct{
+  background-color: rgba(16, 185, 129, 0.15);
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.btn-option.wrong{
+  background-color: rgba(239, 68, 66, 0.15);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.btn-option.disabled{
+  opacity: 0.4;
+  border-color: var(--border-color);
+}
+
+/* Next Button */
+.btn-next{
+  width: 100%;
+  margin-top: 24px;
+  background-color: var(--text-primary);
+  color: var(--bg-main);
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-next:hover{
+  background-color:#e2e8f0;
+}

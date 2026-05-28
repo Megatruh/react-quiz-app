@@ -2,13 +2,13 @@ export const quizData=[
     {
         id:1,
         question:"Manakah yang merupakah hook dasar di React untuk mengelola state ?",
-        option:["useEffect", "useState", "useContext", "useReducer"],
+        options:["useEffect", "useState", "useContext", "useReducer"],
         correctAnswer:"useState",
     },
     {
         id:2,
         question:"Kapan useEffect dengan array dependensi kosong [] akan dijalankan ?",
-        option:[
+        options:[
             "Setiap kali komponen re-render", 
             "Hanya sekali setelah komponen selesai mount", 
             "Saat komponen unmount saja", 
@@ -19,7 +19,7 @@ export const quizData=[
     {
         id:3,
         question:"Apa fungsi utama dai syntax JSX di React ?",
-        option:[
+        options:[
             "Menulis CSS murni di dalam Javascript", 
             "Menggabungkan HTML dan logika Javascript secara deklaratif", 
             "Menjalankan query langsung ke database SQL", 
