@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { quizData } from './data/quizData';
 import StartScreen from './components/StartScreen';
 import QuizCard from './components/QuizCard';
 import Timer from './components/Timer';
+import ResultScreen from './components/ResultScreen';
 import './App.css';
 
 function App(){
@@ -138,15 +139,21 @@ function App(){
 
       {/* Fase 3 : Halaman Akhir (Placeholder sementara) */}
       {quizStage === 'RESULT' && (
-        <div className="start-screen">
-          <h2>Kuis Selesai! 🎉</h2>
-          <p>
-            Skor Kamu : <strong style={{ color:'var(--accent-primary)' }}>{Math.round((score / totalQuestions) * 100)}/100</strong>
-          </p>
-          <div className="btn-primary" onClick={handleStartQuiz}>
-            Main Lagi ?
-          </div>
-        </div>
+        // <div className="start-screen">
+        //   <h2>Kuis Selesai! 🎉</h2>
+        //   <p>
+        //     Skor Kamu : <strong style={{ color:'var(--accent-primary)' }}>{Math.round((score / totalQuestions) * 100)}/100</strong>
+        //   </p>
+        //   <div className="btn-primary" onClick={handleStartQuiz}>
+        //     Main Lagi ?
+        //   </div>
+        // </div>
+        <ResultScreen
+          score={score}
+          totalQuestions={totalQuestions}
+          userHistory={userHistory}
+          onRestart={handleStartQuiz}
+        />
       )}
 
     </div>
