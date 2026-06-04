@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { quizData } from './data/quizData';
 import StartScreen from './components/StartScreen';
 import QuizCard from './components/QuizCard';
+import Timer from './components/Timer';
 import './App.css';
 
 function App(){
@@ -11,6 +12,9 @@ function App(){
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [userHistory, setUserHistory] = useState([]);
+
+  // State baru untuk melacak sisa waktu (60 detik)
+  const [timeLeft, setTimeLeft] = useState(60);
   
   // Variabel Pembantu
   const currentCard = quizData[currentQuestionIndex];
@@ -26,6 +30,7 @@ function App(){
     setScore(0);
     setSelectedAnswer(null);
     setUserHistory([]);
+    setTimeLeft(60);
   };
 
 
@@ -53,6 +58,33 @@ function App(){
     ]);
   };
 
+  // Fungsi khusus untk handle jika waktu habis
+  const handleTimeout = ()=> {
+    // FIX: Cegah skor menjadi minus menggunakan Math.max
+    setScore((prevScore) => Math.max(0, prevScore -1));
+
+    // Catat ke riwayat bahwa pertanyaan ini terlewat karena kehabisa waktu
+    setUserHistory((previewHistory) => [
+      ...previewHistory,
+      {
+        question: currentCard.question,
+        selected: "TIMEOUT (Tidak Terjawab)",
+        correct: currentCard.correctAnswer,
+        isCorrect: false,
+        status: 'TIMEOUT',
+      }
+    ]);
+
+    // Langsung paksa lompat ke pertanyaan selanjutnya 
+    if(isLastQuestion){
+      setQuizStage('RESULT');
+    } else {
+      setCurrentQuestionIndex((previewIndex) => previewIndex + 1);
+      setSelectedAnswer(null);
+      setTimeLeft(60);
+    }
+  };
+
 
   // 4. Fungsi navigasi ke pertanyaan selanjutnya 
   const handleNextQuestion = () => {
@@ -61,6 +93,7 @@ function App(){
     } else {
       setCurrentQuestionIndex((previewIndex) => previewIndex + 1);
       setSelectedAnswer(null);
+      setTimeLeft(60);
     }
   };
   
@@ -79,8 +112,18 @@ function App(){
         <div className="active-screen">
           {/* Header Progres Sederhana */}
           <div className="header-active-screen">
-            Question {currentQuestionIndex + 1} of {totalQuestions}
+            <span>
+              Question {currentQuestionIndex + 1} of {totalQuestions}
+            </span>
+            {/* Komponen Timer */}
+            <Timer
+              timerLeft={timeLeft}
+              setTimeLeft={setTimeLeft}
+              isAnswerd={isAnswered}
+              onTimeout={handleTimeout}
+            />  
           </div>
+
 
           <QuizCard
             cardData={currentCard}

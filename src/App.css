@@ -102,6 +102,10 @@ body{
 }
 
 .header-active-screen{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
   margin-bottom:15px;
   color: var(--text-secondary);
   font-size: 14px;
@@ -182,4 +186,37 @@ body{
 
 .btn-next:hover{
   background-color:#e2e8f0;
+}
+
+.timer-container{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-main);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.timer-label{
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.timer-text{
+  font-size: 14px;  
+  font-weight: 700;
+  color: var(--accent-primary);
+  font-family: monospace;
+}
+
+.timer-text.critical{
+  color: var(--color-danger);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%{ opacity: 1;}
+  50%{opacity: 0.5;}
+  100%{opacity: 1;}
 }
